@@ -15,6 +15,9 @@
 	<description>sample project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		 <sonar.projectKey>Vaishnavi-D-R_spring-app-jenkins-aws</sonar.projectKey>
+  		 <sonar.organization>vaishnavi-d-r</sonar.organization>
+ 		 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
