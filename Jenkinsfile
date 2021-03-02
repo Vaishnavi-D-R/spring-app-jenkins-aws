@@ -99,7 +99,7 @@ pipeline {
            {
               steps{
         withAWS(region:'us-west-2',credentials:'eaaf81ec-205e-40de-ad8f-a21281406850') {
-                    s3Upload(file:'C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline/target/*.jar', bucket:'vaishnavidrbucket', path:'artifacts/')
+                    s3Upload(file:'C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline@2/src/sample/*.jar', bucket:'vaishnavidrbucket', path:'artifacts/')
         }
               }
         }
