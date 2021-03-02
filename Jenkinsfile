@@ -91,7 +91,7 @@ pipeline {
               steps{
           sshagent(['513fbce6-0f7a-4bc0-8cd9-66f09ab7ab56']){
                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@52.25.51.185 pwd'
-                   sh 'scp -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/new-pipeline/target/*.jar ubuntu@52.25.51.185:/home/ubuntu/artifacts'
+                   sh 'scp -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline/target/*.jar ubuntu@52.25.51.185:/home/ubuntu/artifacts'
                      }
               }
            }
@@ -99,7 +99,7 @@ pipeline {
            {
               steps{
         withAWS(region:'us-west-2',credentials:'eaaf81ec-205e-40de-ad8f-a21281406850') {
-                    s3Upload(file:'C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/new-pipeline/target/*.jar', bucket:'vaishnavidrbucket', path:'artifacts/')
+                    s3Upload(file:'C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline/target/*.jar', bucket:'vaishnavidrbucket', path:'artifacts/')
         }
               }
         }
