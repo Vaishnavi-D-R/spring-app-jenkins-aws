@@ -98,8 +98,8 @@ pipeline {
          stage('upload to s3')
            {
               steps{
-        withAWS(region:'us-west-2',credentials:'85aff390-c4e1-4aa6-a350-e8586ec1803c') {
-                    s3Upload(file:'artifacts/sample/', bucket:'vaishnavidrbucket', path:'artifacts/')
+        withAWS(region:'us-west-2',credentials:'eaaf81ec-205e-40de-ad8f-a21281406850') {
+                    s3Upload(file:'C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/new-pipeline/target/*.jar', bucket:'vaishnavidrbucket', path:'artifacts/')
         }
               }
         }
