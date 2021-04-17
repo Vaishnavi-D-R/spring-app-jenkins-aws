@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools{
-        maven 'MAVEN-3.6.3'
-        jdk 'JDK 15'
+        maven 'maven'
+        jdk 'jdk15'
     }
     stages {
         stage('Build') {
@@ -23,7 +23,7 @@ pipeline {
         stage("build & SonarQube analysis") {
             agent any
             steps {
-              withSonarQubeEnv('sonar-server') {
+              withSonarQubeEnv('sonarQube') {
                 sh 'mvn clean package sonar:sonar'
               }
             }
@@ -90,8 +90,8 @@ pipeline {
            {
               steps{
           sshagent(['513fbce6-0f7a-4bc0-8cd9-66f09ab7ab56']){
-                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@52.25.51.185 pwd'
-                   sh 'scp -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline/target/*.jar ubuntu@52.25.51.185:/home/ubuntu/artifacts'
+                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@18.221.112.248 pwd'
+                   sh 'scp -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline/target/*.jar ubuntu@18.221.112.248:/home/ubuntu/amyrtifacts'
                      }
               }
            }
