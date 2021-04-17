@@ -28,7 +28,7 @@ pipeline {
               }
             }
           }
-        stage("Quality gate") {
+ /*       stage("Quality gate") {
             steps {
                 waitForQualityGate abortPipeline: true
             }
@@ -42,7 +42,7 @@ pipeline {
                  mail bcc: '', body: 'deploying failed', cc: '', from: '', replyTo: '', subject: 'deployed', to: 'vaishnavidr123@gmail.com'
                 }
             }
-        }
+        } */
       stage('collect artifact'){
            steps{
                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
@@ -89,19 +89,19 @@ pipeline {
          stage('upload to ec2')
            {
               steps{
-          sshagent(['513fbce6-0f7a-4bc0-8cd9-66f09ab7ab56']){
-                   sh 'ssh -o StrictHostKeyChecking=no ubuntu@18.221.112.248 pwd'
+          sshagent(['71b3e396-6b85-494e-ac21-18bdea4f6358']){
+                  // sh 'ssh -o StrictHostKeyChecking=no ubuntu@18.221.112.248 pwd'
                    sh 'scp -r C:/Windows/System32/config/systemprofile/AppData/Local/Jenkins/.jenkins/workspace/jfrog-artifactory-pipeline/target/*.jar ubuntu@18.221.112.248:/home/ubuntu/amyrtifacts'
                      }
               }
            }
-         stage('upload to s3')
+  /*       stage('upload to s3')
            {
               steps{
         withAWS(region:'us-west-2',credentials:'eaaf81ec-205e-40de-ad8f-a21281406850') {
                     s3Upload(file:'target/*.jar', bucket:'vaishnavidrbucket', path:'artifacts/')
         }
               }
-        }
+        }*/
     }
 }
